@@ -4,7 +4,11 @@ import Serial_Comm
 
 # File Main
 def frontMain(currImage:np.array):
-    '''Main File fo this section. Called in main to get intended functionality out of functions'''
+    '''
+    Main File fo this section. 
+    Called in main to get intended functionality out of functions
+    Timing information:  2.7 ms ± 128 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+    '''
     # Get green filtered image
     greenImage = filter_around_green(currImage=currImage)
     
@@ -39,6 +43,8 @@ def processMargins(currImage:np.array, leftBorder, rightBorder):
     '''
     Function to Take the image with the boundaries drawn in 
     and process the image for depth information based on those boundaries
+    
+    return format: (h, w, offset == j - j_x); where j_x is j at horizontal depth the black pixels end
     '''
     left_depth = []
     right_depth = []

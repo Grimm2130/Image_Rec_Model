@@ -11,18 +11,19 @@ def toggle_spray(pred : int):
         (void)
     '''
     pin = 7
-    # Setup the gpio
-    gpio.setmode(gpio.BOARD)
-    gpio.setup(pin, gpio.OUT)
+    
     # decide the switch value
-    if(pred[0]==0):
-        gpio.output(pin,True)
+    if(pred==0):
+        print("Corn predicted\n")
+        gpio.output(pin, gpio.LOW)
+        time.sleep(0.5)
+        gpio.output(pin, gpio.HIGH)
         print("Corn")
         # wait for spray to complete
         # time.sleep(4)
     else:
-        gpio.output(pin,False)
+        print("Soy predicted\n")
+        gpio.output(pin,gpio.HIGH)
         print("Soy")
         
-    gpio.cleanup()
     return
